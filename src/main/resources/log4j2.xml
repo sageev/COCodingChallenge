@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30" status="debug">
+    <!-- monitorInterval: automatic reload every 30sec on changes -->
+    <!-- status: log4j2 internal logging (not for the app) -->
+
+    <!-- fantastic: properties within config-file finally in log4j2 <img draggable="false" class="emoji" alt="🙂" src="https://s.w.org/images/core/emoji/2.4/svg/1f642.svg"> -->
+    <Properties>
+        <Property name="log-path">${sys:root}/logs</Property>
+    </Properties>
+
+    <Appenders>
+        <File name="APPLICATION" fileName="${application}.log" append="true">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="APPLICATION"/>
+        </Root>
+    </Loggers>
+</Configuration>
